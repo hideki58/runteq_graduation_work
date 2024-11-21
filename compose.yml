@@ -36,4 +36,3 @@ volumes:
   bundle_data:
   postgresql_data:
   node_modules:
-  
