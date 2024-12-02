@@ -30,5 +30,6 @@ module Myapp
       g.skip_routes true # ルーティングを生成しない
       g.helper false # helperを生成しない
       g.test_framework nil # testファイルを生成しない
+    end
   end
 end
