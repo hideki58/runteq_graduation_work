@@ -1,0 +1,20 @@
+<header class="text-[#302359] body-font bg-[#fbfbfb]">
+  <div class="container mx-auto flex flex-wrap py-10 px-8 lg:px-20 flex-row items-center">
+
+    <%= link_to 'EmoSpace', root_path, class: "items-center mr-4 hover:text-gray-900 display:inine-block" %>
+
+    <%# link_to root_path, class: "flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" do %>
+      <%# ---左端にロゴ--- image_tag 'Journalip.png', class: 'w-full h-auto rounded', style: 'max-width: 300px; max-height: 200px;' %>
+    <%# end %>
+    <!-- tablet-Desktop Menu -->
+    <div class="hidden lg:block text-xs md:flex md:ml-auto flex-nowrap items-center justify-center">
+      <%= link_to 'マイページ', '#', class: "mr-4 hover:font-bold" %>
+      <%= link_to '投稿', '#', data: { turbo: false }, class: "mr-4 hover:font-bold" %>
+      <%= link_to '一覧', '#', class: "mr-4 hover:font-bold" %>
+      <%= link_to 'ログアウト','#' , data: { turbo_method: :delete }, class: "hover:font-bold" %>
+    </div>
+
+   
+
+  </div>
+</header>
