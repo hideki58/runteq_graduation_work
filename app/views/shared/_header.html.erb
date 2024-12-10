@@ -4,17 +4,25 @@
     <%= link_to 'EmoSpace', root_path, class: "items-center mr-4 hover:text-gray-900 display:inine-block" %>
 
     <%# link_to root_path, class: "flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" do %>
-      <%# ---左端にロゴ--- image_tag 'Journalip.png', class: 'w-full h-auto rounded', style: 'max-width: 300px; max-height: 200px;' %>
-    <%# end %>
     <!-- tablet-Desktop Menu -->
     <div class="hidden lg:block text-xs md:flex md:ml-auto flex-nowrap items-center justify-center">
-      <%= link_to 'マイページ', '#', class: "mr-4 hover:font-bold" %>
-      <%= link_to '投稿', '#', data: { turbo: false }, class: "mr-4 hover:font-bold" %>
-      <%= link_to '一覧', '#', class: "mr-4 hover:font-bold" %>
-      <%= link_to 'ログアウト','#' , data: { turbo_method: :delete }, class: "hover:font-bold" %>
+      <ul class="flex items-center space-x-4">
+        <% if user_signed_in? %>
+          <!-- ログインしている場合 -->
+          <%= link_to 'マイページ', '#', class: "mr-4 hover:font-bold" %>
+          <%= link_to '投稿', '#', data: { turbo: false }, class: "mr-4 hover:font-bold" %>
+          <%= link_to '一覧', '#', class: "mr-4 hover:font-bold" %>
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-700 hover:text-red-500 transition duration-300" %>
+        <% else %>
+          <!-- 未ログインの場合 -->
+          <li>
+            <%= link_to 'ログイン', new_user_session_path, class: "text-gray-700 hover:text-blue-500 transition duration-300" %>
+          </li>
+          <li>
+            <%= link_to 'サインアップ', new_user_registration_path, class: "text-gray-700 hover:text-blue-500 transition duration-300" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-
-   
-
   </div>
 </header>
