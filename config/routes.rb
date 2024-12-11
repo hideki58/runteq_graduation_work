@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users # deviseのUsersルーティング
   # root "tasks#index"
   root "static_pages#top"
   resources :tasks
