@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
@@ -9,8 +11,7 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
 # スペースを使用しないスタイル
 Layout/SpaceInsideArrayLiteralBrackets:
-  EnforcedStyleForMultiline: no_space
-  EnforcedStyleForSingleLine: no_space
+  EnforcedStyle: no_space
 # シングルクォートを許容
 Style/StringLiterals:
   EnforcedStyle: single_quotes
