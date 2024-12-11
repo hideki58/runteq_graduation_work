@@ -14,4 +14,4 @@ Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
 # シングルクォートを許容
 Style/StringLiterals:
-  EnforcedStyle: single_quotes
+    EnforcedStyle: double_quotes
