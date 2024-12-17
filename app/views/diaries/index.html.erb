@@ -1,0 +1,62 @@
+<div class="container mx-auto my-8 font-sans">
+  <div class="flex justify-between items-center mb-4">
+    <!-- 前の週リンク -->
+    <%= link_to '前', diaries_path(selected_date: @start_date - 1.week), class: "md:hidden block hover:text-amber-700 transition duration-300 text-xl" %>
+    <%= link_to '前の週', diaries_path(selected_date: @start_date - 1.week), class: "hidden md:inline text-blue-500 hover:underline" %>
+
+    <div class="flex items-center">
+      <select data-calendar-target="year" data-action="change->calendar#updateDays" class="border rounded px-2 py-1">
+        <% (Date.today.year-10..Date.today.year+10).each do |year| %>
+          <option value="<%= year %>" <%= 'selected' if year == @selected_date.year %>><%= year %></option>
+        <% end %>
+      </select>
+      <select data-calendar-target="month" data-action="change->calendar#updateDays" class="border rounded px-2 py-1 ml-2">
+        <% (1..12).each do |month| %>
+          <option value="<%= month %>" <%= 'selected' if month == @selected_date.month %>><%= Date::MONTHNAMES[month] %></option>
+        <% end %>
+      </select>
+      <select data-calendar-target="day" class="border rounded px-2 py-1 ml-2">
+        <% (1..31).each do |day| %>
+          <option value="<%= day %>" <%= 'selected' if day == @selected_date.day %>><%= day %></option>
+        <% end %>
+      </select>
+      <button data-action="click->calendar#goToSelectedWeek" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        移動
+      </button>
+    </div>
+
+    <!-- 次の週リンク -->
+    <%= link_to '次', diaries_path(selected_date: @start_date + 1.week), class: "md:hidden block hover:text-amber-700 transition duration-300 text-xl" %>  <!-- スマホ -->
+    <%= link_to '次の週', diaries_path(selected_date: @start_date + 1.week), class: "hidden md:inline text-blue-500 hover:underline" %>
+  </div>
+
+  <div class="space-y-4">
+    <% (@start_date..@end_date).each do |date| %>
+      <div class="border-b pb-2">
+        <% if @diaries[date] %>
+          <%= link_to diary_path(@diaries[date]), class: "block hover:bg-gray-100 py-2" do %>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold"><%= date.strftime('%A : %Y/%m/%d') %></span>
+              <span class="text-blue-500 hover:underline">日記を見る</span>
+            </div>
+            <% if @diaries[date].image.present? %>
+              <div class="mt-2">
+                <%= image_tag @diaries[date].image.url, class: "w-full max-w-md rounded" %>
+              </div>
+            <% end %>
+            <p class="mt-2 text-gray-700">
+              <%= truncate(@diaries[date].content, length: 100) %>
+            </p>
+          <% end %>
+        <% else %>
+          <%= link_to "#new_diary_path(date: date)", class: "block hover:bg-gray-100 py-2" do %>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold"><%= date.strftime('%Y年%m月%d日') %>（<%= %w(日 月 火 水 木 金 土)[date.wday] %>）</span>
+              <span class="text-green-500 hover:underline">日記を書く</span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
