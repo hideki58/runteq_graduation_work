@@ -9,7 +9,7 @@ class DiariesController < ApplicationController
   def new
     @diary = current_user.diaries.build(date: params[:date])
   end
-  
+
   def diary_params
     params.require(:diary).permit(:title, :content, :date)
   end
