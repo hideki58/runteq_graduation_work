@@ -6,6 +6,10 @@ class DiariesController < ApplicationController
     @diaries = current_user.diaries.where(date: @start_date..@end_date).index_by(&:date)
   end
 
+  def new
+    @diary = current_user.diaries.build(date: params[:date])
+  end
+  
   def diary_params
     params.require(:diary).permit(:title, :content, :date)
   end
