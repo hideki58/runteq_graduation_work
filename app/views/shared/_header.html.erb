@@ -10,7 +10,7 @@
         <% if user_signed_in? %>
           <!-- ログインしている場合 -->
           <%= link_to 'マイページ', '#', class: "mr-4 hover:font-bold" %>
-          <%= link_to '投稿', '#', data: { turbo: false }, class: "mr-4 hover:font-bold" %>
+          <%= link_to '今日の日記', new_diary_path(date: Date.today), data: { turbo: false }, class: "mr-4 hover:font-bold" %>
           <%= link_to '一覧', diaries_path, class: "mr-4 hover:font-bold" %>
           <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-700 hover:text-red-500 transition duration-300" %>
         <% else %>

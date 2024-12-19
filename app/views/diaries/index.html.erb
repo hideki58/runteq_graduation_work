@@ -52,7 +52,7 @@
           <%= link_to "#new_diary_path(date: date)", class: "block hover:bg-gray-100 py-2" do %>
             <div class="flex justify-between items-center">
               <span class="text-lg font-bold"><%= date.strftime('%Y年%m月%d日') %>（<%= %w(日 月 火 水 木 金 土)[date.wday] %>）</span>
-              <span class="text-green-500 hover:underline">日記を書く</span>
+              <span class="text-green-500 hover:underline"><%= link_to '日記を書く', new_diary_path(date: date), class: 'write-diary-link' %></span>
             </div>
           <% end %>
         <% end %>
