@@ -1,33 +1,22 @@
-<%= form_with(model: @diary, local: true, data: { controller: "diary-form image-preview" }) do |form| %>
+<%= form_with model: @diary do |f| %>
     <div class="space-y-6 p-6 bg-washi-pattern rounded-lg shadow-md border border-amber-700">
       <!-- 日付入力 -->
       <div class="flex items-center space-x-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-800" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
         </svg>
-        <%= form.date_field :date, class: "flex-grow bg-transparent border-b-2 border-amber-500 focus:outline-none focus:border-amber-700 placeholder-amber-400 text-amber-900 font-fancy" %>
+        <%= f.date_field :date, class: "flex-grow bg-transparent border-b-2 border-amber-500 focus:outline-none focus:border-amber-700 placeholder-amber-400 text-amber-900 font-fancy" %>
       </div>
-  
-      <!-- 画像アップロード -->
-      <div class="flex items-center space-x-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-800" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-        </svg>
-        <%= form.file_field :image, class: "flex-grow text-sm text-amber-900 placeholder-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-opacity-50", data: { action: "change->image-preview#preview" } %>
+      <div class= "flex items-center space-x-4">
+        <p class="text-amber-900 font-fancy">タイトル：</p>
+        <%= f.text_field :title, class: "flex-grow bg-transparent border-b-2 border-amber-500 focus:outline-none focus:border-amber-700 placeholder-amber-400 text-amber-900 font-fancy" %>
       </div>
-  
-      <!-- 画像プレビュー -->
-      <div id="image-preview" data-image-preview-target="preview" class="mt-4 hidden">
-        <img src="" alt="画像プレビュー" class="max-w-full h-auto rounded-lg shadow-md border border-amber-600">
-      </div>
-  
       <!-- 内容入力 -->
       <div><p class="text-amber-900 font-fancy">内容：</p></div>
-      <%= form.text_area :content, rows: 10,
+      <%= f.text_area :body, rows: 10,
           class: "w-full bg-transparent border-b-2 border-amber-500 focus:outline-none focus:border-amber-700 text-amber-900 font-fancy resize-none",
           style: "background-image: repeating-linear-gradient(transparent, transparent 31px, #f9f1e7 31px, #f9f1e7 32px); line-height: 32px; padding: 8px 0;" %>
-  
       <!-- 保存ボタン -->
-      <%= form.submit "保存", class: "w-full py-2 bg-gradient-to-r from-amber-600 to-amber-800 text-white rounded-lg shadow-md hover:from-amber-700 hover:to-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-opacity-50 transition-all duration-300" %>
+      <%= f.submit "保存", class: "w-full py-2 bg-gradient-to-r from-amber-600 to-amber-800 text-white rounded-lg shadow-md hover:from-amber-700 hover:to-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-opacity-50 transition-all duration-300" %>
     </div>
-  <% end %>
+<% end %>
