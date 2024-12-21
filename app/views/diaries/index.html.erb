@@ -34,25 +34,20 @@
     <% (@start_date..@end_date).each do |date| %>
       <div class="border-b pb-2">
         <% if @diaries[date] %>
-          <%= link_to diary_path(@diaries[date]), class: "block hover:bg-gray-100 py-2" do %>
+          <%= link_to "#", class: "block hover:bg-gray-100 py-2" do %>
             <div class="flex justify-between items-center">
-              <span class="text-lg font-bold"><%= date.strftime('%A : %Y/%m/%d') %></span>
+              <span class="text-lg font-bold"><%= date.strftime('%Y年%m月%d日') %>（<%= %w(日 月 火 水 木 金 土)[date.wday] %>）</span>
               <span class="text-blue-500 hover:underline">日記を見る</span>
             </div>
-            <% if @diaries[date].image.present? %>
-              <div class="mt-2">
-                <%= image_tag @diaries[date].image.url, class: "w-full max-w-md rounded" %>
-              </div>
-            <% end %>
             <p class="mt-2 text-gray-700">
-              <%= truncate(@diaries[date].content, length: 100) %>
+              <%= truncate(@diaries[date].body, length: 100) %>
             </p>
           <% end %>
         <% else %>
-          <%= link_to "#new_diary_path(date: date)", class: "block hover:bg-gray-100 py-2" do %>
+          <%= link_to new_diary_path(date: date), class: "block hover:bg-gray-100 py-2" do %>
             <div class="flex justify-between items-center">
               <span class="text-lg font-bold"><%= date.strftime('%Y年%m月%d日') %>（<%= %w(日 月 火 水 木 金 土)[date.wday] %>）</span>
-              <span class="text-green-500 hover:underline">日記を書く</span>
+              <span class="text-green-500 hover:underline"><%= link_to '日記を書く', new_diary_path(date: date), class: 'write-diary-link' %></span>
             </div>
           <% end %>
         <% end %>
