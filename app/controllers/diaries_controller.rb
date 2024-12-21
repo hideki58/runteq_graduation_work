@@ -9,13 +9,13 @@ class DiariesController < ApplicationController
   def new
     @diary = current_user.diaries.build(date: params[:date])
   end
-  
+
   def create
     @diary = current_user.diaries.build(diary_params)
     if @diary.save
-      redirect_to diaries_path, success: t('defaults.flash_message.created', item: @diary.model_name.human)
+      redirect_to diaries_path, success: t("defaults.flash_message.created", item: @diary.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: @diary.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_created", item: @diary.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
