@@ -34,11 +34,14 @@
     <% (@start_date..@end_date).each do |date| %>
       <div class="border-b pb-2">
         <% if @diaries[date] %>
-          <%= link_to "#", class: "block hover:bg-gray-100 py-2" do %>
+          <%= link_to diary_path(@diaries[date]), class: "block hover:bg-gray-100 py-2" do %>
             <div class="flex justify-between items-center">
               <span class="text-lg font-bold"><%= date.strftime('%Y年%m月%d日') %>（<%= %w(日 月 火 水 木 金 土)[date.wday] %>）</span>
               <span class="text-blue-500 hover:underline">日記を見る</span>
             </div>
+            <p class="mt-2 text-gray-700">
+              <%= @diaries[date].title %>
+            </p>
             <p class="mt-2 text-gray-700">
               <%= truncate(@diaries[date].body, length: 100) %>
             </p>
