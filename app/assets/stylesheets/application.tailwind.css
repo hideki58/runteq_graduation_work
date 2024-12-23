@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-/* カスタムユーティリティ */
+/* 日記詳細画面のレイアウト */
 @layer utilities {
     .bg-striped {
       background-image: repeating-linear-gradient(
