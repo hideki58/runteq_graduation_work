@@ -1,0 +1,23 @@
+<div class="bg-washi-pattern p-6 rounded-lg shadow-md border border-amber-700">
+  <div class="diary-content mb-6">
+    <p class="text-2xl font-serif mb-8 text-amber-900 border-b-4 border-dotted border-amber-900 pb-2">
+      <strong class="text-amber-800">日付:</strong>
+      <span class="italic text-amber-700"><%= @diary.date %></span>
+    </p>
+    <div class="font-serif text-amber-900">
+      <h2 class="text-2xl font-bold mb-4 py-2 border-b-4 border-dotted border-amber-900">
+        <span class="text-amber-900">タイトル：</span>
+      </h2>
+    </div>
+    <div class="font-serif text-amber-900">
+      <h2 class="text-2xl font-bold mb-4 py-2 border-b-4 border-dotted border-amber-900">
+        <span class="text-amber-900">内容：</span>
+      </h2>
+      <div class="bg-transparent px-4 py-5">
+        <p id="diary-body" class="mt-2 whitespace-pre-wrap text-black diary-content-lines leading-relaxed text-lg bg-striped">
+          <%= @diary.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

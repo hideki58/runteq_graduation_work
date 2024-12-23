@@ -20,6 +20,10 @@ class DiariesController < ApplicationController
     end
   end
 
+  def show
+    @diary = current_user.diaries.find(params[:id])
+  end
+
   def diary_params
     params.require(:diary).permit(:title, :body, :date)
   end
