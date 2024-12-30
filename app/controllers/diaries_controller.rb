@@ -24,6 +24,20 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.find(params[:id])
   end
 
+  def edit
+    @diary = current_user.diaries.find(params[:id])
+  end
+
+  def update
+    @diary = current_user.diaries.find(params[:id])
+    if @diary.update(diary_params)
+      redirect_to diary_path(@diary)
+    else
+      flash.now[:danger] = t("defaults.flash_message.not_update", item: @diary.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def diary_params
     params.require(:diary).permit(:title, :body, :date)
   end
