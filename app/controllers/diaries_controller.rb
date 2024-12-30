@@ -24,7 +24,7 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.find(params[:id])
   end
 
-  def edit 
+  def edit
     @diary = current_user.diaries.find(params[:id])
   end
 
@@ -37,8 +37,6 @@ class DiariesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
-      
 
   def diary_params
     params.require(:diary).permit(:title, :body, :date)
