@@ -21,3 +21,10 @@
     </div>
   </div>
 </div>
+<% if current_user.own?(@diary) %>
+  <div class='d-flex justify-content-end'>
+    <%= link_to edit_diary_path(@diary), id: "button-edit-#{@diary.id}" do %>
+      <i class="bi bi-pencil-fill">編集</i>
+    <% end %>
+  </div>
+<% end %>
