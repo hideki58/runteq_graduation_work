@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :diaries, dependent: :destroy
+
+  def own?(resource)
+    resource.user_id == id
+  end
 end
